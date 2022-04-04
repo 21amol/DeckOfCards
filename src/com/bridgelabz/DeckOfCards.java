@@ -1,6 +1,7 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DeckOfCards {
     ArrayList<String> deck = new ArrayList<>();
@@ -24,8 +25,21 @@ public class DeckOfCards {
         }
     }
 
+    public void noOfPlayers() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nEnter the no. of players");
+        int players = scanner.nextInt();
+
+        if (players > 2 && players <= 4) {
+            System.out.println("The game starts");
+        } else {
+            System.out.println("Required players to play the game are more than 2 and Max 4");
+        }
+    }
+
     public static void main(String[] args) {
         DeckOfCards cardsdeck = new DeckOfCards();
         cardsdeck.deckOfCards();
+        cardsdeck.noOfPlayers();
     }
 }
