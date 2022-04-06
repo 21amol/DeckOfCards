@@ -59,8 +59,7 @@ public class DeckOfCards {
         }
         System.out.println("Shuffled Cards" + shuffledDeck);
     }
-
-
+    
     public void distributionOfCards(int players) {
 
         for (int i = 0; i < players; i++) {
@@ -71,7 +70,6 @@ public class DeckOfCards {
             System.out.println("");
         }
     }
-
 
     public static void main(String[] args) {
         DeckOfCards cardsdeck = new DeckOfCards();
