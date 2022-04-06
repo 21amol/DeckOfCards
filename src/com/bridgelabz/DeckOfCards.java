@@ -1,12 +1,12 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class DeckOfCards {
 
-    static ArrayList<String> deck = new ArrayList<>();
+    ArrayList<String> deck = new ArrayList<>();
+    ArrayList<String> shuffledDeck = new ArrayList<>();
 
     public static int TOTAL_CARDS = 52;
 
@@ -50,16 +50,26 @@ public class DeckOfCards {
 
     public void shufflingOfCards() {
         int index;
-        ArrayList<String> shuffledDeck = new ArrayList<>();
+
         while (deck.size() > 0) {
             index = (int) (Math.random() * deck.size());
-       //     System.out.println("Card number: " + index);
+            //     System.out.println("Card number: " + index);
             shuffledDeck.add(deck.get(index));
             deck.remove(index);
         }
         System.out.println("Shuffled Cards" + shuffledDeck);
     }
+    
+    public void distributionOfCards(int players) {
 
+        for (int i = 0; i < players; i++) {
+            System.out.print("\nPlayer " + (i + 1) + " got cards:\n");
+            for (int j = 0; j < 9; j++) {
+                System.out.println(shuffledDeck.get((i + j * players)));
+            }
+            System.out.println("");
+        }
+    }
 
     public static void main(String[] args) {
         DeckOfCards cardsdeck = new DeckOfCards();
@@ -67,5 +77,6 @@ public class DeckOfCards {
         int members = cardsdeck.noOfPlayers();
         cardsdeck.playersSequence(members);
         cardsdeck.shufflingOfCards();
+        cardsdeck.distributionOfCards(members);
     }
 }
