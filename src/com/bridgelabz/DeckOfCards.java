@@ -1,25 +1,24 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class DeckOfCards {
-    //  static Scanner scanner = new Scanner(System.in);
-    // static int players = scanner.nextInt();
 
-    ArrayList<String> deck = new ArrayList<>();
-    public static final int TOTAL_CARDS = 52;
+    static ArrayList<String> deck = new ArrayList<>();
 
+    public static int TOTAL_CARDS = 52;
 
     public void deckOfCards() {
         System.out.println("Welcome to deck of cards game.");
 
-        String[] suits = {"Clubs, Diamonds, Hearts, Spades"};
-        String[] ranks = {"2,3,4,5,6,7,8,9,10,Jack,Queen,King,Ace"};
+        String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
+        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
         for (int i = 0; i < ranks.length; i++) {
             for (int j = 0; j < suits.length; j++) {
-                deck.add(ranks[i] + " of " + suits[j]);
+                deck.add(ranks[i] + "--->" + suits[j]);
             }
         }
         System.out.println("Total cards inside deck are: " + TOTAL_CARDS);
@@ -43,16 +42,30 @@ public class DeckOfCards {
     }
 
     public void playersSequence(int players) {
-        System.out.println("Distribution of cards will be as follows: ");
+        System.out.println("\nDistribution of cards will be as follows: ");
         for (int i = 1; i <= players; i++) {
             System.out.println("Player " + i + " getting cards------>");
         }
     }
+
+    public void shufflingOfCards() {
+        int index;
+        ArrayList<String> shuffledDeck = new ArrayList<>();
+        while (deck.size() > 0) {
+            index = (int) (Math.random() * deck.size());
+       //     System.out.println("Card number: " + index);
+            shuffledDeck.add(deck.get(index));
+            deck.remove(index);
+        }
+        System.out.println("Shuffled Cards" + shuffledDeck);
+    }
+
 
     public static void main(String[] args) {
         DeckOfCards cardsdeck = new DeckOfCards();
         cardsdeck.deckOfCards();
         int members = cardsdeck.noOfPlayers();
         cardsdeck.playersSequence(members);
+        cardsdeck.shufflingOfCards();
     }
 }
