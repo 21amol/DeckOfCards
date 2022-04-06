@@ -59,16 +59,34 @@ public class DeckOfCards {
         }
         System.out.println("Shuffled Cards" + shuffledDeck);
     }
-    
+
     public void distributionOfCards(int players) {
 
         for (int i = 0; i < players; i++) {
+            //String name = "Player" + "_" + i+1;
+            String[] playersCardData = new String[9];
             System.out.print("\nPlayer " + (i + 1) + " got cards:\n");
             for (int j = 0; j < 9; j++) {
                 System.out.println(shuffledDeck.get((i + j * players)));
+                playersCardData[j] = shuffledDeck.get((i + j * players));
             }
+            int clubs = 0, hearts = 0, spades = 0, diamonds = 0;
+            for (int k = 0; k < 9; k++) {
+                if (playersCardData[k].contains("Clubs")) {
+                    clubs++;
+                } else if (playersCardData[k].contains("Hearts")) {
+                    hearts++;
+                } else if (playersCardData[k].contains("Spades")) {
+                    spades++;
+                } else
+                    diamonds++;
+            }
+            System.out.println("Player " + (i + 1) + " Has--> Clubs: " + clubs + ", Hearts: " + hearts + " ,Spades: "
+                    + spades + " ,Diamonds: " + diamonds);
             System.out.println("");
+
         }
+
     }
 
     public static void main(String[] args) {
